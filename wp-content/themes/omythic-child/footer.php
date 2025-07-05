@@ -1,14 +1,38 @@
 		</div><!-- /.wrapper -->
 		<?php
-			$primary_location = MakespaceChild::get_primary_location();
+			// $primary_location = MakespaceChild::get_primary_location();
+			$site_contact = get_field('contact', 'option');
 		?>
 		<footer class="site-footer">
+			<div class="bg"></div>
 			<div class="container">
 				<?php if(get_field('footer_logo', 'option')): ?>
 					<div class="footer-logo">
 						<img src="<?php echo get_field('footer_logo', 'option'); ?>" alt="">
 					</div>
 				<?php endif; ?>
+					<?php if($social_links = $site_contact['social_media_links']): ?>
+						<ul class="footer-social">
+							<?php foreach($social_links as $link): ?>
+								<?php 
+									$social_site_name = $link['site']['label'];
+									$social_site_class = $link['site']['value'];
+									$social_site_url = $link['url'];
+								?>
+								<li>
+									<a title="<?php echo $social_site_name ?>" href="<?php echo $social_site_url; ?>" target="_blank">
+										<?php if(str_contains($social_site_class, 'twitter')): ?>
+											<svg width="1200" height="1227" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" />
+											</svg>
+										<?php else: ?>
+											<span class="fab fa-<?php echo $social_site_class; ?>"></span>
+										<?php endif; ?>
+									</a>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					<?php endif; ?>
 				<div class="site-footer-menu">
 					<nav class="footer-inlinks">
 						<p class="copyright" role="contentinfo">&copy;<?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>  All rights reserved.</p>
@@ -21,28 +45,6 @@
 						?>
 					</nav>
 					<div class="footer-outlinks">
-						<?php /*if($primary_location && have_rows('social_media_links', $primary_location->ID)): ?>
-							<ul class="footer-social">
-								<?php while(have_rows('social_media_links', $primary_location->ID)): the_row(); ?>
-									<?php 
-										$social_site_name = get_sub_field('site')['label'];
-										$social_site_class = get_sub_field('site')['value'];
-										$social_site_url = get_sub_field('url');
-									?>
-									<li>
-										<a title="<?php echo $social_site_name ?>" href="<?php echo $social_site_url; ?>" target="_blank">
-											<?php if(str_contains($social_site_class, 'twitter')): ?>
-												<svg width="1200" height="1227" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" />
-												</svg>
-											<?php else: ?>
-												<span class="fab fa-<?php echo $social_site_class; ?>"></span>
-											<?php endif; ?>
-										</a>
-									</li>
-								<?php endwhile; ?>
-							</ul>
-						<?php endif;*/ ?>
 						<div class="site-footer__attribution">
 							<a href="https://www.omythic.com/" title="Branding by Omythic" target="_blank" class="omythic-skull">
 								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -68,6 +70,7 @@
 									c7.9,0,13.8,2.9,17.6,8.6c4,7.6,6.1,16.3,6.1,26.3C93.8,66.4,93.7,67,93.7,67.6z"/>
 								</svg>
 							</a>
+							<?php /* ?>
 							<a href="https://www.omythic.com/" title="Branding by Omythic" target="_blank" class="omythic">
 								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1694.23px" height="296.77px" viewBox="0 0 1694.23 296.77" style="overflow:visible;enable-background:new 0 0 1694.23 296.77;" xml:space="preserve">
 									<g>
@@ -149,7 +152,7 @@
 										</g>
 									</g>
 								</svg>
-							</a>
+							</a>*/ ?>
 						</div>
 					</div>
 				</div>

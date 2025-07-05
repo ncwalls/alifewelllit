@@ -56,13 +56,11 @@
 
 		?>
 		<div class="inner">
-			<?php /* ?>
 			<div class="site-header-logo">
 				<a href="<?php echo home_url(); ?>" title="<?php bloginfo( 'name' ); ?>" class="brand">
 					<img src="<?php the_field( 'default_logo', 'option' ); ?>" alt="<?php bloginfo( 'name' ); ?>">
 				</a>
 			</div>
-			*/?>
 			<div class="countdown-timer" data-startdate="<?php echo date_format($start, 'Y-m-d H:i:s'); ?>" data-enddate="<?php echo date_format($end, 'Y-m-d H:i:s'); ?>">
 				<span class="time days">
 					<span class="number" data-abbr="d"><?php echo $days; ?></span>

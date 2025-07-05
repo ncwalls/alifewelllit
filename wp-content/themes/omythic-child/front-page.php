@@ -166,21 +166,23 @@
 				</section>
 			<?php endif; ?>
 
-			<?php if($cast = get_field('cast')): ?>
-				<section class="home-section home-cast">
-					<?php if($cast['background_image']): ?>
-						<img src="<?php echo $cast['background_image']['url']; ?>" alt="" class="bg" loading="lazy">
+			<?php if($table = get_field('table')): ?>
+				<section class="home-section home-table">
+					<?php if($table['background_image']): ?>
+						<div class="bg">
+							<img src="<?php echo $table['background_image']['url']; ?>" alt="" loading="lazy">
+						</div>
 					<?php endif; ?>
 					<div class="container">
 						<div class="content">
-							<?php if($cast['title']): ?>
-								<h2 class="section-title"><?php echo $cast['title']; ?></h2>
+							<?php if($table['title']): ?>
+								<h2 class="section-title"><?php echo $table['title']; ?></h2>
 							<?php endif; ?>
-							<?php if($cast['subtitle']): ?>
-								<h3 class="section-subtitle"><?php echo $cast['subtitle']; ?></h3>
+							<?php if($table['subtitle']): ?>
+								<h3 class="section-subtitle"><?php echo $table['subtitle']; ?></h3>
 							<?php endif; ?>
-							<?php if($cast['content']): ?>
-								<div class="wysiwyg"><?php echo $cast['content']; ?></div>
+							<?php if($table['content']): ?>
+								<div class="wysiwyg"><?php echo $table['content']; ?></div>
 							<?php endif; ?>
 						</div>
 					</div>
@@ -191,6 +193,11 @@
 				<section class="home-section home-guest">
 					<div class="bg"></div>
 					<div class="container">
+						<?php if($guest['image']): ?>
+							<figure class="image">
+								<img src="<?php echo $guest['image']['sizes']['medium']; ?>" alt="" loading="lazy">
+							</figure>
+						<?php endif; ?>
 						<div class="content">
 							<?php if($guest['title']): ?>
 								<h2 class="section-title"><?php echo $guest['title']; ?></h2>
@@ -202,14 +209,9 @@
 								<div class="wysiwyg"><?php echo $guest['content']; ?></div>
 							<?php endif; ?>
 							<?php if($guest_button = $guest['button']): ?>
-								<a href="<?php echo $guest_button['url']; ?>" target="<?php echo $guest_button['target']; ?>" class="button"><?php echo $guest_button['title']; ?></a>
+								<a href="<?php echo $guest_button['url']; ?>" target="<?php echo $guest_button['target']; ?>" class="button dark hover-light"><?php echo $guest_button['title']; ?></a>
 							<?php endif; ?>
 						</div>
-						<?php if($guest['image']): ?>
-							<figure class="image">
-								<img src="<?php echo $guest['image']['sizes']['medium']; ?>" alt="" loading="lazy">
-							</figure>
-						<?php endif; ?>
 					</div>
 				</section>
 			<?php endif; ?>
@@ -233,6 +235,11 @@
 						</div>
 						<?php if($download = $sponsorship['download']): ?>
 							<div class="download">
+								<?php if($download['image']): ?>
+									<figure class="dl-image">
+										<img src="<?php echo $download['image']['sizes']['small']; ?>" alt="" loading="lazy">
+									</figure>
+								<?php endif; ?>
 								<div class="dl-content">
 									<?php if($download['title']): ?>
 										<h3 class="section-subtitle"><?php echo $download['title']; ?></h3>
@@ -244,11 +251,6 @@
 										<a href="<?php echo $download_button['url']; ?>" target="<?php echo $download_button['target']; ?>" class="button"><?php echo $download_button['title']; ?></a>
 									<?php endif; ?>
 								</div>
-								<?php if($download['image']): ?>
-									<figure class="dl-image">
-										<img src="<?php echo $download['image']['sizes']['small']; ?>" alt="" loading="lazy">
-									</figure>
-								<?php endif; ?>
 							</div>
 						<?php endif; ?>
 						<?php if($sponsors = $sponsorship['sponsors']): ?>
@@ -299,7 +301,7 @@
 							<div class="wysiwyg"><?php echo $locations['content']; ?></div>
 						<?php endif; ?>
 						<?php if($locations_button = $locations['button']): ?>
-							<a href="<?php echo $locations_button['url']; ?>" target="<?php echo $locations_button['target']; ?>" class="button"><?php echo $locations_button['title']; ?></a>
+							<a href="<?php echo $locations_button['url']; ?>" target="<?php echo $locations_button['target']; ?>" class="button hover-dark"><?php echo $locations_button['title']; ?></a>
 						<?php endif; ?>
 					</div>
 					<div class="map">
@@ -319,64 +321,66 @@
 								<div class="wysiwyg"><?php echo $blog['content']; ?></div>
 							<?php endif; ?>
 						</div>
-						<div class="blog-list">
-							<?php
-								$latest_posts = get_posts(array(
-									'posts_per_page' => 3,
-									'fields' => 'ids'
-								));
-							?>
-							<?php
-								if($latest_posts): 
-									foreach($latest_posts as $post_id):
-										if($post_info = MakespaceChild::get_post_info($post_id)):
-							?>
-							<article class="post">
-								<a href="<?php echo $post_info['permalink']; ?>" class="wrap">
-									<figure class="post-thumbnail">
-										<div class="image">
-											<img src="<?php echo $post_info['image']; ?>" alt="" loading="lazy">
-										</div>
-									</figure>
-									<div class="content">
-										<div>
-											<h4 class="section-subtitle"><?php echo $post_info['title']; ?></h4>
-											<ul class="post-meta">
-												<li class="readtime">
-													<span class="label">Read time:</span>
-													<span><?php echo $post_info['read_time']; ?> min</span>
+					</div>
+					<div class="blog-list">
+						<?php
+							$latest_posts = get_posts(array(
+								'posts_per_page' => 3,
+								'fields' => 'ids'
+							));
+						?>
+						<?php
+							if($latest_posts): 
+								foreach($latest_posts as $post_id):
+									if($post_info = MakespaceChild::get_post_info($post_id)):
+						?>
+						<article class="post">
+							<a href="<?php echo $post_info['permalink']; ?>" class="wrap">
+								<figure class="post-thumbnail">
+									<div class="image">
+										<img src="<?php echo $post_info['image']; ?>" alt="" loading="lazy">
+									</div>
+								</figure>
+								<div class="content">
+									<div>
+										<h4 class="post-title section-subtitle"><?php echo $post_info['title']; ?></h4>
+										<ul class="post-meta">
+											<li class="readtime">
+												<span class="label">Read time:</span>
+												<span><?php echo $post_info['read_time']; ?> min</span>
+											</li>
+											<?php if($post_info['category']): ?>
+												<li>
+													<span class="label">Category:</span>
+													<ul class="category">
+														<?php foreach($post_info['category'] as $cat): ?>
+															<li><?php echo $cat->name; ?></li>
+														<?php endforeach; ?>
+													</ul>
 												</li>
-												<?php if($post_info['category']): ?>
-													<li>
-														<span class="label">Category:</span>
-														<ul class="category">
-															<?php foreach($post_info['category'] as $cat): ?>
-																<li><?php echo $cat->name; ?></li>
-															<?php endforeach; ?>
-														</ul>
-													</li>
-												<?php endif; ?>
-												<li class="author">
-													<span class="label">Author:</span>
-													<span><?php echo $post_info['author']; ?></span>
-												</li>
-											</ul>
-											<div class="excerpt">
-												<?php echo $post_info['excerpt']; ?>
-											</div>
-										</div>
-										<div>
-											<span class="button">Read This</span>
+											<?php endif; ?>
+											<li class="author">
+												<span class="label">Author:</span>
+												<span><?php echo $post_info['author']; ?></span>
+											</li>
+										</ul>
+										<div class="excerpt">
+											<?php echo $post_info['excerpt']; ?>
 										</div>
 									</div>
-								</a>
-							</article>
-							<?php
-										endif;
-									endforeach;
-								endif;
-							?>
-						</div>
+									<div>
+										<span class="button hover-dark">Read This</span>
+									</div>
+								</div>
+							</a>
+						</article>
+						<?php
+									endif;
+								endforeach;
+							endif;
+						?>
+					</div>
+					<div class="container">
 						<?php if($blog_button = $blog['button']): ?>
 							<a href="<?php echo $blog_button['url']; ?>" target="<?php echo $blog_button['target']; ?>" class="button"><?php echo $blog_button['title']; ?></a>
 						<?php endif; ?>
@@ -386,6 +390,9 @@
 
 			<?php if($contact = get_field('contact')): ?>
 				<section class="home-section home-contact">
+					<?php if($contact['background_image']): ?>
+						<img src="<?php echo $contact['background_image']['url']; ?>" alt="" class="bg" loading="lazy">
+					<?php endif; ?>
 					<div class="container">
 						<div class="content">
 							<?php if($contact['title']): ?>

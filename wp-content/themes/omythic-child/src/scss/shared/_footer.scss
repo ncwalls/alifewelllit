@@ -1,17 +1,101 @@
 .site-footer {
+	background: linear-gradient($brand-brown-drk, $brand-black);
+	color: $brand-brown-lt;
+	padding: pxem(33) 0 pxem(20) 0;
+	position: relative;
 
-	.container {
+	.bg{
+		background: url(assets/bg-pattern-tile.png);
+		background-size: pxem(360) auto;
+		display: block;
+		object-fit: cover;
+		opacity: 0.03;
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
 	}
 
+	.container {
+		position: relative;
+		z-index: 3;
+	}
+
+}
+
+.footer-logo{
+	display: block;
+	margin: 0 auto pxem(40) auto;
+	width: pxem(86);
+
+	img{
+		display: block;
+		width: 100%;
+	}
+}
+
+.footer-social{
+	display: flex;
+	align-items: center;
+	gap: pxem(12);
+	justify-content: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+
+	li{
+		display: inline-block;
+		// margin-left: pxem(12);
+	}
+
+	a{
+		background: $brand-red;
+		border-radius: 50%;
+		color: $brand-black;
+		display: block;
+		font-size: pxem(18);
+		line-height: 1.7em;
+		width: 1.7em;
+		height: 1.7em;
+		text-align: center;
+		transition: background 0.2s;
+
+		&:hover{
+			background: $brand-brown-lt;
+		}
+
+		svg{
+			display: block;
+			width: 50%;
+			height: 100%;
+			margin: auto;
+
+			path{
+				fill: $brand-black;
+			}
+		}
+	}
 }
 
 .site-footer-menu {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
+	margin-top: pxem(15);
+
+	@media (max-width: $tablet) {
+		display: block;
+		text-align: center;
+	}
 }
 
 .footer-inlinks{
+	font-size: pxem(12);
+	letter-spacing: 0.13em;
+	text-transform: uppercase;
+
 	.copyright{
 		display: inline-block;
 		margin: 0 0.5rem 0 0;
@@ -46,66 +130,71 @@
 		}
 
 	}
+
+	a{
+		color: $brand-brown-lt;
+		text-decoration: none;
+
+		&:hover{
+			color: #fff;
+			text-decoration: underline;
+		}
+	}
 }
 
 .footer-outlinks{
 	display: flex;
 	align-items: center;
-}
-
-.footer-social{
-	display: flex;
-	align-items: center;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	white-space: nowrap;
-
-	li{
-		display: inline-block;
-		margin-left: pxem(8);
-	}
-
-	a{
-		background: $brand-grey;
-		border-radius: 50%;
-		color: $brand-black;
-		display: block;
-		font-size: pxem(17);
-		line-height: 1.7em;
-		width: 1.7em;
-		height: 1.7em;
-		text-align: center;
-
-		svg{
-			display: block;
-			width: 50%;
-			height: 100%;
-			margin: auto;
-
-			path{
-				fill: $brand-black;
-			}
-		}
-	}
+	justify-content: center;
 }
 
 
 .site-footer__attribution{
 	margin-left: pxem(20);
+	
+	@media (max-width: $tablet) {
+		margin: pxem(20) 0 0 0;
+	}
 
-	.omythic{
+	.omythic-skull{
 		display: block;
-		width: pxem(76);
+		width: pxem(24);
 
 		svg{
 			display: block;
 			width: 100%;
-			height: pxem(13.4);
+			height: pxem(26);
 
 			path{
-				fill: $brand-black;
+				fill: $brand-red;
+				transition: fill 0.3s;
+			}
+		}
+
+		&:hover{
+			scale: 1.05;
+
+			svg{
+
+				path{
+					fill: $brand-brown-lt;
+				}
 			}
 		}
 	}
+
+	// .omythic{
+	// 	display: block;
+	// 	width: pxem(76);
+
+	// 	svg{
+	// 		display: block;
+	// 		width: 100%;
+	// 		height: pxem(13.4);
+
+	// 		path{
+	// 			fill: $brand-red;
+	// 		}
+	// 	}
+	// }
 }

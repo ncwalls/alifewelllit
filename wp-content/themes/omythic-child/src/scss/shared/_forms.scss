@@ -8,13 +8,15 @@ option {
 	cursor: pointer;
 }
 
-label {
+label,
+.gfield_label{
 	cursor: pointer;
-	font-size: pxem(13);
+	display: block;
+	font-size: pxem(14);
 	font-family: inherit;
 	font-weight: inherit;
 	line-height: 1;
-	text-transform: uppercase;
+	margin: 0 0 0.5em 0;
 }
 
 input,
@@ -104,12 +106,12 @@ input[type="submit"],
 .wp-block-button__link{
 	background: none;
 	border: 0;
-	border-bottom: 1px solid $brand-red;
+	// border-bottom: 1px solid $brand-red;
 	border-radius: 0;
 	color: $brand-red;
 	cursor: pointer;
 	display: inline-block;
-	font-family: $font-family-callout;
+	font-family: $font-family-headline;
 	font-size: pxem(19);
 	font-style: normal;
 	font-weight: 600;
@@ -117,11 +119,42 @@ input[type="submit"],
 	line-height: 1.1;
 	padding: 0 0 0.05em 0;
 	text-align: center;
-	text-decoration: none;
+	text-decoration: underline;
 	text-transform: uppercase;
+	text-underline-offset: 0.2em;
 	transition: all 0.3s;
 
 	&:hover {
+		color: $brand-brown-lt;
+		border-color: $brand-brown-lt;
+	}
+
+	&.dark{
+		color: $brand-black;
+		border-color: $brand-black;
+		
+		&:hover {
+			color: $brand-brown;
+			border-color: $brand-brown;
+		}
+	}
+	&.hover-red{
+		&:hover{
+			color: $brand-red;
+			border-color: $brand-red;
+		}
+	}
+	&.hover-light{
+		&:hover{
+			color: #fff;
+			border-color: #fff;
+		}
+	}
+	&.hover-dark{
+		&:hover{
+			color: $brand-brown;
+			border-color: $brand-brown;
+		}
 	}
 }
 
@@ -138,7 +171,7 @@ input[type="submit"],
 
 .gfield {
 	float: left;
-	margin-bottom: pxem(10);
+	margin-bottom: pxem(15);
 	padding: 0 pxem(10);
 	width: 100%;
 
@@ -168,12 +201,6 @@ input[type="submit"],
 		}
 	}
 
-	label {
-		display: block;
-		line-height: 1;
-		margin-bottom: 0.5rem;
-	}
-
 	input,
 	select,
 	textarea {
@@ -193,6 +220,9 @@ input[type="submit"],
 
 	
 	&.field_type_consent{
+		border: 0;
+		margin-top: 0.5em;
+
 		&.hidden_label{
 			label{
 				position: relative;
@@ -205,12 +235,6 @@ input[type="submit"],
 		}
 
 		.gfield_label{
-			display: block;
-			font-size: 1.4rem;
-			font-weight: 300;
-			line-height: 1;
-			margin-bottom: 0.5rem;
-			text-transform: uppercase;
 		}
 
 		.ginput_container_consent{
@@ -232,9 +256,9 @@ input[type="submit"],
 			.gfield_consent_label{
 				// color: $brand-black;
 				display: flex;
-				align-items: center;
+				// align-items: center;
 				font-family: $font-family-base;
-				font-size: 1.5rem;
+				font-size: pxem(18);
 				font-weight: 400;
 				line-height: 1.2;
 				margin: 0;
@@ -248,11 +272,12 @@ input[type="submit"],
 				}
 
 				&:before{
-					background: #FCFCFC;
-					border: 1px solid rgba($brand-black,0.2);
-					color: $brand-black;
+					background: $brand-brown-lt;
+					border: 0;
+					color: $brand-red;
 					content: '\f00c';
 					display: block;
+					flex: 0 0 auto;
 					font-family: $font-family-icons;
 					font-size: 0;
 					font-weight: 400;

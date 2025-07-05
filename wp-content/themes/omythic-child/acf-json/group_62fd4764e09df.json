@@ -632,7 +632,7 @@
         },
         {
             "key": "field_6867f6db3065f",
-            "label": "Cast",
+            "label": "Table",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -650,8 +650,8 @@
         },
         {
             "key": "field_6867f6da30658",
-            "label": "Cast",
-            "name": "cast",
+            "label": "Table",
+            "name": "table",
             "aria-label": "",
             "type": "group",
             "instructions": "",
@@ -1588,5 +1588,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1751663175
+    "modified": 1751725993
 }
