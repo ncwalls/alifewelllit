@@ -1,0 +1,102 @@
+
+.faq-list{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	> li{
+		border-top: 1px solid rgba($brand-black,0.3);
+		overflow: hidden;
+		margin-top: 1em;
+		padding-top: 1em;
+
+		&.open{
+			.question{
+				&:after{
+					transform: translateY(-50%) rotate(180deg);
+				}
+			}
+			.answer{
+				grid-template-rows: 1fr;
+				padding: pxem(5) pxem(20) pxem(20) pxem(35);
+			}
+		}
+	}
+
+	.question,
+	.answer{
+		// color: $brand-black;
+		padding: pxem(10) pxem(35);
+		position: relative;
+
+		&:before{
+			// color: $brand-blue-lt;
+			font-size: pxem(23);
+			font-weight: 700;
+			line-height: 1;
+			position: absolute;
+			left: 0.3em;
+		}
+
+		p{
+			margin: 0;
+		}
+	}
+
+	.question{
+		// background: rgba($brand-blue, 0.13);
+		cursor: pointer;
+		// font-weight: 600;
+
+		&:before{
+			content: 'Q';
+			top: 0.4em;
+		}
+
+		&:after{
+			// color: $brand-blue-lt;
+			content: '\f107';
+			font-family: $font-family-icons;
+			position: absolute;
+			top: 50%;
+			right: pxem(8);
+			transform: translateY(-50%);
+		}
+	}
+
+	.answer{
+		// background: rgba($brand-blue, 0.06);
+		display: grid;
+		grid-template-rows: 0fr;
+		padding: 0 pxem(20) 0 pxem(35);
+		overflow: hidden;
+		transition: all 0.3s;
+
+		&:before{
+			content: 'A';
+			top: 0.2em;
+		}
+
+		.wysiwyg{
+			overflow: hidden;
+		}
+
+		p{
+			+ p{
+				margin-top: 0.5em;
+			}
+		}
+
+		ul,ol{
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+
+			li{
+				margin-bottom: 0.5em;
+			}
+		}
+		ul{
+			list-style: disc;
+		}
+	}
+}

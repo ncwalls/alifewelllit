@@ -1,0 +1,35 @@
+<!-- wp:paragraph -->
+<p>All information on this website is property of <strong>{{site_name}}</strong> ©[year].</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>All material at this website, such as text, images, markup, CSS, programming, TITLE tag content, META element tag content, and design, is ©[year] to <strong>{{site_name}}</strong> and may not be reproduced elsewhere in any way without our express written permission.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Responsive Design, Images, and Artwork Cannot Be Reproduced</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>This <a href="https://www.makespaceweb.com/services/louisville-website-design/" target="_blank">responsive web design</a> and unique combination of images, colors, sizes, typography, positioning, CSS, HTML and other markup and programming is ©[year] to <strong>{{site_name}}</strong> and cannot be reproduced or used anywhere else, whether in part or in whole. No exceptions.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Website Design and Development</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>This website was created, designed and developed by the <a href="https://www.makespaceweb.com/" target="_blank">Louisville web design company Makespace</a>. Any inquiries about this <a href="https://www.makespaceweb.com/services/louisville-website-design" target="_blank">website design</a>, <a href="https://www.makespaceweb.com/services/louisville-website-design/index.html#anchor-dev" target="_blank">WordPress development</a>, and other <a href="https://www.makespaceweb.com/services/" target="_blank">digital marketing services</a> of this website should be directed to [protected_email email="<a href="mailto:info@makespaceweb.com" target="_blank" rel="noreferrer noopener">info@makespaceweb.com</a>"], or you may stop by our Louisville office.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>You can visit the Louisville web design company online at&nbsp;<a href="https://www.makespaceweb.com/" rel="noreferrer noopener" target="_blank">www.makespaceweb.com</a>. Makespace reserves the right to use this website in its&nbsp;<a href="https://www.makespaceweb.com/web-design-portfolio/" rel="noreferrer noopener" target="_blank">web design portfolio</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Logo and Branding</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>This website's <a href="https://www.makespaceweb.com/services/louisville-logo-design-and-branding.html" target="_blank">logo and branding</a> may have also been created by Makespace. If so, all rights and ownership of the brand assets belong to <strong>{{site_name}}</strong> and you should contact <strong>{{site_name}}</strong> for usage rights. If unsure, you may call <a href="https://www.makespaceweb.com/" target="_blank">Makespace</a> to learn more.</p>
+<!-- /wp:paragraph -->

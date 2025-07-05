@@ -1,0 +1,104 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: inherit;
+	font-family: $font-family-headline;
+	font-weight: $font-weight-headline;
+	line-height: 1.1;
+	margin: 0 0 0.5em 0;
+	word-wrap: break-word;
+}
+h1{
+	font-size: pxem(44);
+	line-height: 1;
+}
+h2{
+	font-size: pxem(32);
+	line-height: 1;
+}
+h3{
+}
+p {
+	margin-top: 0;
+	margin-bottom: 1em;
+}
+blockquote {
+	padding: 0;
+	margin: 1em 0;
+}
+
+ol, ul {
+	margin: 0 0 1em 2em;
+	padding: 0;
+
+	ol, ul {
+		margin-bottom: 0;
+	}
+
+	nav & {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+}
+address {
+	font-style: normal;
+	margin: 0 0 1rem;
+}
+[hidden] {
+	display: none !important;
+}
+
+.wysiwyg{
+
+	.wp-block-heading{
+		margin-top: 1em;
+
+		+ .wp-block-heading{
+			margin-top: 0.5em;
+		}
+	}
+
+	table {
+		margin: 0 auto 1em;
+		width: 100%;
+
+		th,td{
+			border: 1px solid rgba(#000, 0.2);
+			padding: 0.5em;
+		}
+	}
+
+	ul,
+	ol{
+		margin-bottom: 2rem;
+		
+		li{
+			margin-bottom: 0.5rem;
+		}
+	}
+
+	hr{
+		border-top: 1px solid $brand-black;
+		box-shadow: none;
+		display: block;
+		height: 0;
+		margin: 2em 0;
+	}
+}
+
+
+.wp-block-table,
+.wp-block-table.aligncenter,
+.wp-block-table.alignleft,
+.wp-block-table.alignright{
+	margin: 1em 0;
+	width: 100%;
+
+	table{
+		width: 100%;
+	}
+}

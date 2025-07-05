@@ -1,0 +1,56 @@
+{
+  "name": "wpframework",
+  "version": "2.0.0",
+  "description": "Custom installer for the Makespace WordPress framework",
+  "main": "index.js",
+  "scripts": {
+    "beforerun": "npm install adm-zip async os ncp prompt simple-git",
+    "editor": "npm run beforerun && node installer.js --edit-framework && npm run afterrun",
+    "installer": "npm run beforerun && node installer.js && npm run afterrun",
+    "afterrun": "npm uninstall adm-zip async os ncp prompt simple-git && npm install"
+  },
+  "author": "Makespace",
+  "contributors": [
+    {
+      "name": "Joe Ponzio",
+      "url": "https://github.com/joeponzio"
+    },
+    {
+      "name": "Nathan Walls",
+      "url": "https://github.com/ncwalls"
+    },
+    {
+      "name": "Alex Gustafson",
+      "url": "https://github.com/alexjgustafson"
+    },
+    {
+      "name": "Alex McKay",
+      "url": "https://github.com/yakcmxela"
+    },
+    {
+      "name": "Kurt Johnson",
+      "url": "https://github.com/KurtMakesWeb"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "a11y": "0.5.1",
+    "autoprefixer": "^7.2.5",
+    "browser-sync": "^2.23.6",
+    "colors": "^1.4.0",
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.1.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-sass": "^5.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^5.0.0",
+    "jshint": "^2.9.5",
+    "magnific-popup": "1.*",
+    "normalize-scss": "7.*",
+    "sass": "^1.64.1",
+    "slick-carousel": "1.*"
+  }
+}

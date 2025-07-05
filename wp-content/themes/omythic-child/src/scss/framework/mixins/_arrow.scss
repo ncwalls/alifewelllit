@@ -1,0 +1,71 @@
+@mixin arrow-top($width, $height, $color) {
+	border-color: transparent transparent $color transparent;
+	border-width: 0 $width/2 $height $width/2;
+	border-style: solid;
+	display: inline-block;
+	height: 0;
+	width: 0;
+}
+
+@mixin arrow-bottom($width, $height, $color) {
+	border-color: $color transparent transparent transparent;
+	border-width: $height $width/2 0 $width/2;
+	border-style: solid;
+	display: inline-block;
+	height: 0;
+	width: 0;
+}
+
+@mixin arrow-left($width, $height, $color) {
+	border-color: transparent $color transparent transparent;
+	border-width: $height/2 $width $height/2 0;
+	border-style: solid;
+	display: inline-block;
+	height: 0;
+	width: 0;
+}
+
+@mixin arrow-right($width, $height, $color) {
+	border-color: transparent transparent transparent $color;
+	border-width: $height/2 0 $height/2 $width;
+	border-style: solid;
+	display: inline-block;
+	height: 0;
+	width: 0;
+}
+
+@mixin arrow-bottom-right($width, $height, $color) {
+	border-color: transparent transparent $color transparent;
+	border-width: 0 0 $height $width;
+	border-style: solid;
+	display: inline-block;
+	height: 0;
+	width: 0;
+}
+
+@mixin arrow-bottom-left($width, $height, $color) {
+	border-color: transparent transparent transparent $color;
+	border-width: $height 0 0 $width;
+	border-style: solid;
+	display: inline-block;
+	height: 0;
+	width: 0;
+}
+
+@mixin arrow-top-right($width, $height, $color) {
+	border-color: transparent $color transparent transparent;
+	border-width: 0 $width $height 0;
+	border-style: solid;
+	display: inline-block;
+	height: 0;
+	width: 0;
+}
+
+@mixin arrow-top-left($width, $height, $color) {
+	border-color: $color transparent transparent transparent;
+	border-width: $height $width 0 0;
+	border-style: solid;
+	display: inline-block;
+	height: 0;
+	width: 0;
+}

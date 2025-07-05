@@ -1,0 +1,156 @@
+$spacing: 2;
+$unit: rem;
+$i: 1;
+@while $i <= 12 {
+	// Turn $spacing into a usable unit.
+	$gap: $spacing * 1 + $unit;
+	// Divides grid into # of columns
+	$col-base-width: 100 / $i;
+	// Number of gaps needed (columns - 1)
+	$n-1: $i - 1;
+	// Adjust base column width to accommodate gaps
+	$col-width-removed: ($n-1 * $spacing) / $i;
+	$col-width: $col-base-width - $col-width-removed;
+	// Column width to %
+	$col: $col-width  * 1%;
+	// Create gaps columns for all but last
+	$col-fr: '';
+	$n: 1;
+	@while($n <= $i) {
+		@if $n == $i {
+			$col-fr: $col-fr + $col;
+		} @else {
+			$col-fr: $col-fr + $col + ' ' + $gap + ' ';
+		}
+		$n: $n + 1;
+	}
+	.columns-#{$i} {
+		display: grid;
+		grid-template-columns: repeat($i, 1fr);
+		grid-column-gap: $gap;
+		-ms-grid-columns: unquote($col-fr);
+		.product,
+		.post,
+		.block {
+			-ms-grid-columns: 1;
+			margin-bottom: $gap;
+		}
+		$x: 1;
+		$n: 1;
+		$grid-col: 1;
+		$grid-row: 1;
+		@while $n < 12 {
+			.product,
+			.post,
+			.block {
+				@if ($x / $i) > 1 {
+					$grid-col: 1;
+					$grid-row: $grid-row + 1;
+					$x: 1;
+				}
+				&:nth-child(#{$n}) {
+					-ms-grid-column: $grid-col;
+					-ms-grid-row: $grid-row;
+				}
+			}
+			$grid-col: $grid-col + 2;
+			$x: $x + 1;
+			$n: $n + 1;
+		}
+	}
+	@media(max-width: $laptop) {
+		$n: 1;
+		$col: ((50  - $spacing / 2) * 1%);
+		$col-fr: '';
+		$row-fr: '';
+		@while($n <= 2) {
+			@if $n == 2 {
+				$col-fr: $col-fr + $col;
+			} @else {
+				$col-fr: $col-fr + $col + ' ' + $gap + ' ';
+			}
+			$n: $n + 1;
+		}
+		.columns-#{$i} {
+			grid-template-columns: repeat(2, 1fr);
+			-ms-grid-columns: unquote($col-fr);
+			$n: 1;
+			$grid-col: 1;
+			$grid-row: 1;
+			@while $n < 12 {
+				.product,
+				.post,
+				.block {
+					&:nth-child(#{$n}) {
+						-ms-grid-column: $grid-col;
+						-ms-grid-row: $grid-row;
+					}
+				}
+
+				$grid-col: $grid-col + 2;
+				@if $grid-col > 3 {
+					$grid-col: 1;
+					$grid-row: $grid-row + 2;
+				}
+				$n: $n + 1;
+			}
+		}
+	}
+	@media(max-width: $phablet) {
+		.columns-#{$i} {
+			display: block;
+		}
+	}
+	$i: $i + 1;
+}
+
+$i: 1;
+@while $i < 12 {
+	.flex-columns-#{$i},
+	.gallery-columns-#{$i} {
+		display: flex;
+		align-items: stretch;
+		justify-content: center;
+		flex-wrap: wrap;
+		.post,
+		.product,
+		.block,
+		.gallery-item {
+			width: (((100 / $i)  - ((($i - 1) * 2) * 1.5 ) / $i ) * 1%);
+			margin: 1.5%;
+			&:nth-child(#{$i}n) {
+				margin-right: 0px;
+			}
+			&:nth-child(#{$i}n + 1) {
+				margin-left: 0px;
+			}
+		}
+		@media(max-width: $mobile-nav-breakpoint) {
+			.post,
+			.product,
+			.block,
+			.gallery-item {
+				width: 49%;
+				margin: 1%;
+				&:nth-child(1n+2) {
+					margin-left: 0px;
+					margin-right: 1%;
+				}
+				&:nth-child(2n) {
+					margin-left: 1%;
+					margin-right: 0px;
+				}
+			}
+		}
+		@media(max-width: 500px) {
+			.post,
+			.product,
+			.block,
+			.gallery-item {
+				width: 100%;
+				margin: 1rem 0;
+			}
+		}
+	}
+	$i: $i + 1;
+}

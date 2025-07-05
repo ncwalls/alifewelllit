@@ -1,0 +1,63 @@
+@use "sass:math";
+html {
+	box-sizing: border-box;
+	font-size: 10px;
+
+	// @media(min-width: $fullsize){
+	// 	font-size: #{1000px/$design-width}vw;
+	// }
+}
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+	outline: none;
+}
+body {
+	color: $brand-black;
+	font-family: $font-family-base;
+	font-size: #{math.div($font-size-base, 10px)}rem;
+	font-size: clamp(1.6rem, #{( math.div(($font-size-base - 10), $design-width)) * 100}vw + 1rem, #{math.div($font-size-base, 10px)}rem);
+	font-weight: $font-weight-base;
+	line-height: $line-height-base;
+	padding-top: pxem(67);
+
+	&.nav-open {
+		overflow: hidden;
+	}
+
+	&.home {
+		// padding-top: 0;
+	}
+
+	@media (max-width: $phablet) {
+		// padding-top: $header-mobile-height;
+	}
+}
+.wrapper {
+	min-height: 100vh;
+	overflow: hidden;
+}
+.skip-link,
+.screen-reader-text {
+	position: absolute !important;
+	overflow: hidden;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	clip: rect(0 0 0 0);
+	&:focus {
+		overflow: auto;
+		width: auto;
+		height: auto;
+		margin: 0;
+		clip: auto;
+		z-index: 10000;
+		padding: 15px;
+		background-color: #fff;
+		color: #43515c;
+		transition: none;
+	}
+}

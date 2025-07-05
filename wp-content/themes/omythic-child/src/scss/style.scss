@@ -1,0 +1,32 @@
+/*!----------------------------------------------------------------------------------------------------
+ * Theme Name: Omythic Theme
+ * Description: Just another custom WordPress theme by the fine folks at Omythic!
+ * Author: Omythic
+ * Author URI: https://www.omythic.com
+ * Version: 2.0.0
+ * Template: omythic-framework
+-----------------------------------------------------------------------------------------------------*/
+@import "framework/framework";
+
+
+/*-----------------------------------------------------------------------------------------------------
+  Shared Elements
+-----------------------------------------------------------------------------------------------------*/
+@import "shared/universals";
+@import "shared/header";
+@import "shared/footer";
+@import "shared/template-banner";
+@import "shared/breadcrumbs";
+@import "shared/filter-dropdown";
+@import "shared/forms";
+@import "shared/faq";
+
+
+/*-----------------------------------------------------------------------------------------------------
+  Pages
+-----------------------------------------------------------------------------------------------------*/
+@import "pages/front-page";
+@import "pages/page";
+@import "pages/page_contact";
+@import "pages/blog";
+@import "pages/single";

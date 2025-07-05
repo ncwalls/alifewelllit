@@ -1,0 +1,89 @@
+{
+    "key": "group_5a7f14f16d5d1",
+    "title": "Staff Module: Overview",
+    "fields": [
+        {
+            "key": "field_5a7f14fa94a2d",
+            "label": "Header Image",
+            "name": "staff_module_header_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "large",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "3840",
+            "max_height": "3840",
+            "max_size": "2",
+            "mime_types": "jpg"
+        },
+        {
+            "key": "field_5a7f150a94a2e",
+            "label": "Intro Copy",
+            "name": "staff_module_intro_copy",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5afc5a30158d0",
+            "label": "Parent Page",
+            "name": "staff_module_parent",
+            "type": "post_object",
+            "instructions": "When selected, adds the parent page to an archive's breadcrumbs.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "makespace-staff_module-archive-settings"
+            }
+        ]
+    ],
+    "menu_order": 51,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1526487712
+}

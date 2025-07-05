@@ -1,0 +1,14 @@
+a {
+	color: $brand-red;
+	// text-decoration: underline;
+	transition: color 0.3s;
+
+	&:hover{
+		
+	}
+
+	nav &,
+	&.button {
+		// text-decoration: none;
+	}
+}

@@ -1,0 +1,18 @@
+.editor-styles-wrapper{
+	.wp-block-post-content{
+		.wp-block-group{
+			border: 1px dotted #777;
+		}
+	}
+}
+
+ .editor-visual-editor {
+	overflow: visible;
+}
+.interface-navigable-region.components-resizable-box__container.edit-post-meta-boxes-main.is-resizable {
+	max-height: none !important;
+	height: auto !important;
+}
+.editor-visual-editor{
+	min-height: 420px;
+}

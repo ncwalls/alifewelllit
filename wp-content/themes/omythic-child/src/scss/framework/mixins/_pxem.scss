@@ -1,0 +1,6 @@
+@use "sass:math";
+
+@function pxem($n) {
+	$npx: $n + 0px;
+	@return #{round( math.div($npx, $font-size-base) * 100) / 100}em;
+}

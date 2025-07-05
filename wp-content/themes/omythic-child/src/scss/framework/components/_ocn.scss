@@ -1,0 +1,271 @@
+#ocn-overlay {
+	background: rgba(0,0,0,0.85);
+	bottom: 0;
+	display: block;
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: fixed;
+	visibility: hidden;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: -99997;
+	transition: opacity 0.3s, visibility 0s, z-index 0s;
+	transition-delay: 0s, 0.3s, 0.3s;
+
+	.nav-open & {
+		opacity: 1;
+		visibility: visible;
+		transition-delay: 0ms, 0ms, 0ms;
+		z-index: 99997;
+	}
+}
+
+#ocn {
+	background: #fff;
+	bottom: 0;
+	position: fixed;
+	overflow-y: scroll;
+	right: 0;
+	top: 0;
+	max-width: 30rem;
+	width: 90%;
+	z-index: 99998;
+	transform: translateX(100%);
+	transition: transform 0.3s;
+	transition-delay: 0ms;
+
+	.nav-open & {
+		box-shadow: 0 0 4px #000;
+		transform: translateX(0);
+		transition-delay: 0.2s;
+	}
+
+	#ocn-inner {
+		@include clearfix;
+	}
+}
+
+#ocn-top {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	padding: 2rem;
+	position: relative;
+}
+#ocn-brand {
+	max-width: 15rem;
+}
+#ocn-close {
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	display: block;
+	height: 3rem;
+	padding: 0;
+	position: relative;
+	right: -4px;
+	top: -2px;
+	width: 3rem;
+
+	&:before,
+	&:after {
+		background: $brand-black;
+		border-radius: 2px;
+		content: '';
+		display: block;
+		height: 4px;
+		top: 50%;
+		left: 0;
+		position: absolute;
+		width: 100%;
+	}
+	&:before {
+		transform: rotate(-45deg);
+	}
+	&:after {
+		transform: rotate(45deg);
+	}
+}
+
+#ocn-nav-primary {
+	
+	.menu {
+		> li {
+			padding: 0.9em 0;
+			position: relative;
+
+			+ li{
+				border-top: 1px solid $brand-blue;
+			}
+			
+			.ocn-link-wrap{
+				display: block;
+				position: relative;
+			}
+
+			a {
+				color: $brand-black;
+				// font-size: pxem(20);
+				// font-weight: 700;
+				line-height: 1;
+				text-transform: uppercase;
+				display: block;
+				position: relative;
+
+				// &:hover{
+				// 	color: $brand-red;
+				// }
+
+				// &[href="#"]{
+				// 	&:hover{
+				// 		color: $brand-black;
+
+				// 		+ .ocn-sub-menu-button{
+				// 			&:after{
+				// 				color: $brand-red;
+				// 			}
+				// 		}
+				// 	}
+				// }
+			}
+			.ocn-sub-menu-button{
+				display: none;
+			}
+		}
+		
+		li{
+			&.menu-item-has-children {
+				
+				& > .ocn-link-wrap{
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+
+					a{
+						// flex: 1;
+					}
+					
+
+					& > .ocn-sub-menu-button{
+						// align-items: center;
+						background: none;
+						border: 0;
+						border-radius: 0;
+						// color: #fff;
+						flex: 1;
+						cursor: pointer;
+						display: block;
+						line-height: 1;
+						padding: 0;
+						text-align: right;
+
+						&:after {
+							content: '\f107';
+							display: inline-block;
+							font-family: $font-family-icons;
+							font-size: pxem(20);
+							transition: all 0.2s;
+						}
+
+						// &:hover{
+						// 	&:after{
+						// 		color: $brand-red;
+						// 	}
+						// }
+					}
+				}
+			}
+
+			.sub-menu-wrap{
+				display: grid;
+				grid-template-rows: 0fr;
+				transition: all 0.5s;
+			}
+			.sub-menu {
+				font-size: 0.9em;
+				overflow: hidden;
+
+				li{
+					overflow: hidden;
+					padding: 1em 1em 0 1em;
+				}
+
+				a{
+					// color: $brand-black;
+					// font-weight: 400;
+					text-transform: none;
+				}
+			}
+
+			&.menu-item-open {
+				> .ocn-link-wrap > .ocn-sub-menu-button:after {
+					transform: rotate(-180deg);
+				}
+				> .sub-menu-wrap{
+					grid-template-rows: 1fr;
+				}
+			}
+		}
+	}
+}
+
+
+#nav-toggle {
+	display: none;
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	height: pxem(22);
+	line-height: 1;
+	padding: 0;
+	position: relative;
+	right: 0;
+	width: pxem(34);
+
+	&:before,
+	&:after,
+	.middle-bar{
+		background: $brand-black;
+		border-radius: 0.2rem;
+		display: block;
+		height: pxem(4);
+		transition: transform 0.3s;
+		transition-delay: 0;
+	}
+
+	&:before,
+	&:after{
+		content: '';
+		position: absolute;
+		right: 0;
+		left: 0;
+	}
+	&:before{
+		top: 0;
+		transition-delay: 0;
+	}
+	
+	&:after{
+		bottom: 0;
+		transition-delay: 0.2s;
+	}
+
+	.middle-bar{
+		transition-delay: 0.1s;
+	}
+
+	@media (max-width : $mobile-nav-breakpoint) {
+		display: block;
+	}
+}
+.nav-open {
+	#nav-toggle {
+		&:before,
+		&:after,
+		.middle-bar{
+			transform: translateX(200%);
+		}
+	}
+}

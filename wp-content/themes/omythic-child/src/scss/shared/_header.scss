@@ -1,0 +1,89 @@
+.site-header {
+	background: $brand-black;
+	height: pxem(67);
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 101;
+
+	.scrolled &{
+		// height: $header-height-scrolled;
+	}
+
+	.inner {
+		align-items: center;
+		display: flex;
+		height: 100%;
+		justify-content: center;
+		position: relative;
+	}
+
+	.countdown-timer{
+		color: $brand-red;
+		display: flex;
+		gap: 1em;
+		font-family: $font-family-headline;
+		font-size: pxem(20);
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	@media (max-width: $phablet) {
+		// height: pxem(67);
+
+		.scrolled &{
+			// height: $header-mobile-height-scrolled;
+		}
+	}
+}
+
+.site-header-logo{
+	.brand{
+		img{
+			display: block;
+		}
+	}
+}
+
+.site-header-menu {
+	text-align: right;
+
+	@media (max-width : $mobile-nav-breakpoint) {
+		display: none;
+	}
+
+	.menu {
+		> li {
+			display: inline-block;
+		}
+	}
+}
+
+#large-nav-primary{
+	
+	.menu-item-has-children{
+		position: relative;
+		
+		&:hover{
+			.sub-menu{
+				max-height: 100rem;
+				opacity: 1;
+			}
+		}
+		
+		.sub-menu{
+			max-height: 0;
+			opacity: 0;
+			overflow: hidden;
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			text-align: left;
+			transform: translateX(-50%);
+			transition: all 0.3s;
+			white-space: nowrap;
+		}
+	}
+}
+

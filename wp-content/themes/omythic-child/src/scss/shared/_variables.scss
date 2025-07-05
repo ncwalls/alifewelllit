@@ -1,0 +1,90 @@
+@use "sass:math";
+/*----------------------------------------------------------------------
+  FONTS
+----------------------------------------------------------------------*/
+$font-family-base:     'Lato', sans-serif;
+$font-weight-base:     400;
+$font-family-headline: 'Signika', $font-family-base;
+$font-weight-headline: 600;
+$font-family-callout:  $font-family-base;
+$font-size-base:       18px;
+$font-size-mobile:     $font-size-base;
+$line-height-base:     1.4;
+$font-family-icons:    "Font Awesome 5 Pro"; 
+
+
+/*----------------------------------------------------------------------
+  BRANDING COLORS
+----------------------------------------------------------------------*/
+$brand-black: #221F20;
+$brand-blue: #00A79D;
+$brand-brown: #6C6761;
+$brand-brown-drk: #433A2E;
+$brand-brown-lt: #D2CCC2;
+$brand-grey: #373534;
+$brand-green: #8DC63F;
+$brand-red: #F04B4B;
+$brand-red2: #C12525;
+
+/* Spacing */
+// $header-height: 12rem;
+// $header-height-scrolled: $header-height;
+// $header-mobile-height: 8rem;
+// $header-mobile-height-scrolled: $header-mobile-height;
+
+/* Social media colors */
+$facebook-blue:    #3c5b9b;
+$google-plus-red:  #f63d27;
+$instagram-blue:   #517fa4;
+$pinterest-red:    #cb2027;
+$spotify-green:    #1DB954;
+$twitter-blue:     #2daae1;
+$youtube-red:      #ff0000;
+$vimeo-blue:       #19b7ea;
+
+
+/*----------------------------------------------------------------------
+  FORMS
+----------------------------------------------------------------------*/
+$form-error-color:	   $brand-red;
+
+/*----------------------------------------------------------------------
+  CONTAINERS & GRID
+----------------------------------------------------------------------*/
+// $container-max-width: pxem(1085);
+// $container-width:     80%;
+$design-width:        1400px;
+
+
+/*----------------------------------------------------------------------
+  MEDIA QUERIES & BREAKPOINTS
+----------------------------------------------------------------------*/
+$use-max-width: true;
+$mobile:   480px;
+$phablet:  640px;
+$tablet:   768px;
+$largetablet: 900px;
+$laptop:   1024px;
+$desktop:  1280px;
+$fullsize: $design-width;
+$mobile-nav-breakpoint: $laptop;
+
+
+/*----------------------------------------------------------------------
+  CALCULATIONS & STANDARDS
+  You should not have to edit anything below this line. If so and you
+  believe it's a problem with or enhancement to the framework, be sure
+  to create an issue on Github:
+
+  https://github.com/makespaceweb/makespace-child/issues
+
+----------------------------------------------------------------------*/
+$fa-font-path:       'fonts';
+// $max-width:          #{math.div($container-max-width, 10px)}rem;
+@if $use-max-width == true {
+	$phablet:  $phablet - 1px;
+	$tablet:   $tablet - 1px;
+	$laptop:   $laptop - 1px;
+	$desktop:  $desktop - 1px;
+	$fullsize: $fullsize - 1px
+}

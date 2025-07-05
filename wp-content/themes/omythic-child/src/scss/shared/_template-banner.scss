@@ -1,0 +1,9 @@
+.msw-page-banner {
+	background-position: center top;
+	background-size: cover;
+	height: 30vw;
+
+	@media (max-width: $phablet) {
+		height: 40vw;
+	}
+}

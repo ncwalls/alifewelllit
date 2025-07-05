@@ -1,0 +1,36 @@
+#breadcrumbs {
+	line-height: 1.3;
+	min-height: pxem(60);
+	padding: 0.5em 0 1em 0;
+	// text-align: right;
+	
+	@media (max-width: $tablet) {
+		// display: none;
+	}
+
+	ul {
+		font-size: pxem(12);
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		text-transform: uppercase;
+	}
+
+	li {
+		display: inline-block;
+
+		& + li {
+			&::before {
+				content: ">";
+				display: inline-block;
+				margin-left: 0.5em;
+				margin-right: 0.5em;
+			}
+		}
+	}
+
+	a{
+		// color: $brand-blue;
+		text-decoration: underline;
+	}
+}
