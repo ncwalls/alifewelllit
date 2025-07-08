@@ -35,6 +35,9 @@ if( !function_exists( 'get_google_map_data' ) ){
 				if ( get_field( 'map_marker', $location ) ) {
 					$location_marker = get_field( 'map_marker', $location )['url'];
 				}
+				elseif ( get_field( 'map_marker', 'option' ) ) {
+					$location_marker = get_field( 'map_marker', 'option' )['url'];
+				}
 			}
 
 			/*
@@ -60,19 +63,40 @@ if( !function_exists( 'get_google_map_data' ) ){
 			if ( isset( $location_marker ) ) {
 				$location_array['marker'] = $location_marker;
 			}
-			$location_array['infowindow_content'] = '<p>' . esc_html( get_field( 'street_address_line_1', $location) ) . '<br>';
-			if(get_field( 'street_address_line_2', $location)){
-				$location_array['infowindow_content'] .= esc_html( get_field( 'street_address_line_2', $location) ) . '<br>';
-			}
-			$location_array['infowindow_content'] .= esc_html( get_field( 'city', $location) ) . ', ';
-			$location_array['infowindow_content'] .= esc_html( get_field( 'state_region', $location) ) . ' ';
-			$location_array['infowindow_content'] .= esc_html( get_field( 'zip_postal_code', $location) ) . '</p>';
+			$location_array['infowindow_content'] = '<div class="infowindow-row">';
 
-			$map_location = get_field('google_map', $location);
-			if(isset($map_location['address'])){
-				$directions_link = makespaceChild::get_google_directions_url( $map_location['address'] );
-				$location_array['infowindow_content'] .= '<p><a href="' . $directions_link . '" target="_blank">Directions</a></p>';
-			}
+				if(get_the_post_thumbnail_url($location_id)){
+					$location_array['infowindow_content'] .= '<div class="infowindow-image"><img src="' . get_the_post_thumbnail_url($location_id) . '" alt="' . $location_name .'"></div>';
+				}
+				
+				$location_array['infowindow_content'] .= '<div class="infowindow-content">';
+					$location_array['infowindow_content'] .= '<p class="name">' . $location_name . '</p>';
+
+					$location_array['infowindow_content'] .= '<p class="address">';
+					$location_infowindow_address = esc_html( get_field( 'street_address_line_1', $location) ) . '<br>';
+					if(get_field( 'street_address_line_2', $location)){
+						$location_infowindow_address .= esc_html( get_field( 'street_address_line_2', $location) ) . '<br>';
+					}
+					$location_infowindow_address .= esc_html( get_field( 'city', $location) ) . ', ';
+					$location_infowindow_address .= esc_html( get_field( 'state_region', $location) ) . ' ';
+					$location_infowindow_address .= esc_html( get_field( 'zip_postal_code', $location) ) . '</p>';
+					
+					$map_location = get_field('google_map', $location);
+					if(isset($map_location['address'])){
+						$directions_link = makespaceChild::get_google_directions_url( $map_location['address'] );
+						$location_array['infowindow_content'] .= '<a href="' . $directions_link . '" target="_blank">' . $location_infowindow_address . '</a></p>';
+					}
+					else{
+						$location_array['infowindow_content'] .= $location_infowindow_address;
+					}
+					$location_array['infowindow_content'] .= '</p>';
+					
+					if($location_phone = get_field( 'phone', $location)){
+						$location_array['infowindow_content'] .= '<p class="phone"><a href="tel:' . MakespaceChild::format_number_string($location_phone) . '">' . $location_phone . '</p>';
+					}
+				$location_array['infowindow_content'] .= '</div>';
+			$location_array['infowindow_content'] .= '</div>';
+
 			$map[] = $location_array;
 		}		
 

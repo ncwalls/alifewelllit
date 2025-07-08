@@ -46,70 +46,63 @@
 				</nav>
 			</div>
 		</div>
+	</div>
 
-		<div class="archive-list">
-			<?php while( have_posts() ): the_post(); ?>
-				<article <?php post_class(); ?> id="post-<?php the_ID(); ?>" itemscope itemtype="http://schema.org/BlogPosting">
-					<a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
-						<?php
-							$thumb_image = '';
-							if( get_the_post_thumbnail_url() ){
-								$thumb_image = get_the_post_thumbnail_url( get_the_ID(), 'medium' );
-							}
-							else{
-								$thumb_image = get_field( 'default_placeholder_image', 'option' )['sizes']['medium'];
-							}
-						?>
-						<figure class="post-thumbnail">
-							<div class="image">
-								<img src="<?php echo $thumb_image; ?>" alt="" loading="lazy">
-							</div>
-						</figure>
-						<div class="content">
+	<div class="blog-list">
+		<?php while( have_posts() ): the_post(); ?>
+			<article <?php post_class(); ?> id="post-<?php the_ID(); ?>" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="<?php the_permalink(); ?>" class="wrap">
+					<figure class="post-thumbnail">
+						<div class="image">
+							<?php 
+								$thumb_image = '';
+								if( get_the_post_thumbnail_url() ){
+									$thumb_image = get_the_post_thumbnail_url( get_the_ID(), 'medium' );
+								}
+								else{
+									$thumb_image = get_field( 'default_placeholder_image', 'option' )['sizes']['medium'];
+								}
+							?>
+							<img src="<?php echo $thumb_image; ?>" alt="" loading="lazy">
+						</div>
+					</figure>
+					<div class="content">
+						<div>
 							<h2 class="post-title" itemprop="name"><?php the_title(); ?></h2>
-							<?php if( is_search() ): ?>
-								<?php
-									$post_type_label = false;
-
-									$post_type_obj = get_post_type_object(get_post_type());
-
-									if($post_type_obj->name == 'post' ){
-										$post_type_label = 'Blog Post';
-									}
-									elseif($post_type_obj){
-										if($post_type_obj->name == 'page'){
-											$post_type_label = false;
-										}
-										else{
-											$post_type_label = $post_type_obj->labels->singular_name;
-										}
-									}
-
-									if($post_type_label != false):
-								?>
-									<ul class="post-meta">
-										<li>
-											<?php echo $post_type_label; ?>
-										</li>
-									</ul>
+							<ul class="post-meta">
+								<li class="readtime">
+									<span class="label">Read time:</span>
+									<span><?php read_time(); ?></span>
+								</li>
+								<?php if(get_the_category()): ?>
+									<li>
+										<span class="label">Category:</span>
+										<ul class="category">
+											<?php foreach(get_the_category(get_the_ID()) as $cat): ?>
+												<li><?php echo $cat->name; ?></li>
+											<?php endforeach; ?>
+										</ul>
+									</li>
 								<?php endif; ?>
-							<?php else: ?>
-								<ul class="post-meta">
-									<li><i class="far fa-clock"></i><?php read_time(); ?></li>
-									<li datetime="<?php the_time( 'Y-m-d' ); ?>" itemprop="datePublished"><i class="far fa-calendar"></i><?php the_time( 'F j, Y' ); ?></li>
-									<li><i class="fas fa-pencil"></i><?php the_author(); ?></li>
-								</ul>
-							<?php endif; ?>
-							<div class="post-excerpt">
+								<li class="author">
+									<span class="label">Author:</span>
+									<span><?php the_author(); ?></span>
+								</li>
+							</ul>
+							<div class="excerpt">
 								<?php the_excerpt(); ?>
 							</div>
-							<span class="button">Read This</span>
 						</div>
-					</a>
-				</article>
-			<?php endwhile; ?>
-		</div>
-		
+						<div>
+							<span class="button hover-dark">Read This</span>
+						</div>
+					</div>
+				</a>
+			</article>
+		<?php endwhile; ?>
+	</div>
+	
+	<div class="container">
 		<?php if(paginate_links()): ?>
 			<footer class="archive-pagination">
 				<div class="pagination-links">

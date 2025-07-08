@@ -75,7 +75,7 @@ class MakespaceFrameworkLocationsModule {
 			'hierarchical' => true,
 			'public' => true,
 			'menu_icon' => $post_type_menu_icon,
-			'supports' => array( 'title', 'editor', 'revisions', 'page-attributes' ),
+			'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'page-attributes' ),
 			'show_in_rest' => true,
 			'rewrite' => array(
 				'slug' =>  $post_type_slug

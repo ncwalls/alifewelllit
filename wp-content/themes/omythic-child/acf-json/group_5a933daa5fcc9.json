@@ -3,9 +3,36 @@
     "title": "Locations Module: Overview",
     "fields": [
         {
+            "key": "field_686c8f64f1c28",
+            "label": "Map Marker",
+            "name": "map_marker",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        },
+        {
             "key": "field_5a933daa68b6e",
             "label": "Header Image",
             "name": "locations_module_header_image",
+            "aria-label": "",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -21,15 +48,16 @@
             "min_width": "",
             "min_height": "",
             "min_size": "",
-            "max_width": "3840",
-            "max_height": "3840",
-            "max_size": "2",
+            "max_width": 3840,
+            "max_height": 3840,
+            "max_size": 2,
             "mime_types": "jpg"
         },
         {
             "key": "field_5a933daa68bab",
             "label": "Intro Copy",
             "name": "locations_module_intro_copy",
+            "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
             "required": 0,
@@ -40,15 +68,17 @@
                 "id": ""
             },
             "default_value": "",
+            "allow_in_bindings": 1,
             "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
+            "toolbar": "basic",
+            "media_upload": 0,
             "delay": 0
         },
         {
             "key": "field_5afc5a8be2745",
             "label": "Parent Page",
             "name": "locations_module_parent",
+            "aria-label": "",
             "type": "post_object",
             "instructions": "When selected, adds the parent page to an archive's breadcrumbs.",
             "required": 0,
@@ -65,7 +95,8 @@
             "allow_null": 0,
             "multiple": 0,
             "return_format": "object",
-            "ui": 1
+            "ui": 1,
+            "bidirectional_target": []
         }
     ],
     "location": [
@@ -83,7 +114,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1526487731
+    "show_in_rest": 0,
+    "modified": 1751945079
 }

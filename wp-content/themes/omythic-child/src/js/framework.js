@@ -46,7 +46,203 @@
 	var createGoogleMapInit = function( markers ){
 		var maxZoom = document.getElementById('gmap').getAttribute('data-maxZoom');
 		var minZoom = document.getElementById('gmap').getAttribute('data-minZoom');
-		var styles = document.getElementById('gmap').getAttribute('data-styles');
+		// var styles = document.getElementById('gmap').getAttribute('data-styles');
+		var styles = [
+		  {
+		    "elementType": "geometry",
+		    "stylers": [
+		      {
+		        "color": "#51605a"
+		      }
+		    ]
+		  },
+		  {
+		    "elementType": "labels.icon",
+		    "stylers": [
+		      {
+		        "visibility": "off"
+		      }
+		    ]
+		  },
+		  {
+		    "elementType": "labels.text.fill",
+		    "stylers": [
+		      {
+		        "color": "#a6a6a6"
+		      }
+		    ]
+		  },
+		  {
+		    "elementType": "labels.text.stroke",
+		    "stylers": [
+		      {
+		        "color": "#212121"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "administrative",
+		    "elementType": "geometry",
+		    "stylers": [
+		      {
+		        "color": "#51605a"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "administrative.country",
+		    "elementType": "labels.text.fill",
+		    "stylers": [
+		      {
+		        "color": "#ffffff"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "administrative.locality",
+		    "elementType": "labels.text.fill",
+		    "stylers": [
+		      {
+		        "color": "#ffffff"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "poi",
+		    "elementType": "labels.text.fill",
+		    "stylers": [
+		      {
+		        "color": "#c2c2c2"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "poi.business",
+		    "stylers": [
+		      {
+		        "visibility": "off"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "poi.park",
+		    "elementType": "geometry",
+		    "stylers": [
+		      {
+		        "color": "#51605a"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "poi.park",
+		    "elementType": "labels.text.fill",
+		    "stylers": [
+		      {
+		        "color": "#adadad"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "road",
+		    "elementType": "geometry.fill",
+		    "stylers": [
+		      {
+		        "color": "#828d89"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "road",
+		    "elementType": "labels.icon",
+		    "stylers": [
+		      {
+		        "visibility": "off"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "road",
+		    "elementType": "labels.text.fill",
+		    "stylers": [
+		      {
+		        "color": "#f2f2f2"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "road.arterial",
+		    "elementType": "geometry",
+		    "stylers": [
+		      {
+		        "color": "#828d89"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "road.highway",
+		    "elementType": "geometry",
+		    "stylers": [
+		      {
+		        "color": "#97a19d"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "road.highway.controlled_access",
+		    "elementType": "geometry",
+		    "stylers": [
+		      {
+		        "color": "#97a19d"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "road.local",
+		    "elementType": "labels.text.fill",
+		    "stylers": [
+		      {
+		        "color": "#c4c4c4"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "transit",
+		    "elementType": "geometry.fill",
+		    "stylers": [
+		      {
+		        "color": "#303030"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "transit",
+		    "elementType": "labels.text.fill",
+		    "stylers": [
+		      {
+		        "color": "#d1d1d1"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "water",
+		    "elementType": "geometry",
+		    "stylers": [
+		      {
+		        "color": "#25282b"
+		      }
+		    ]
+		  },
+		  {
+		    "featureType": "water",
+		    "elementType": "labels.text.fill",
+		    "stylers": [
+		      {
+		        "color": "#c2c2c2"
+		      }
+		    ]
+		  }
+		];
+
 		map = new google.maps.Map(document.getElementById('gmap'), {
 			center: {lat: -38.216996, lng: -85.575},
 			disableDoubleClickZoom: true,
@@ -64,7 +260,13 @@
 			var position = new google.maps.LatLng( markers[i].lat, markers[i].lng );
 			bounds.extend( position );
 			marker = new google.maps.Marker({
-				icon: markers[i].marker,
+				// icon: markers[i].marker,
+				icon: {
+					url: markers[i].marker,
+					size: new google.maps.Size(36, 36),
+					// origin: new google.maps.Point(0, 0),
+					anchor: new google.maps.Point(18, 13),
+				},
 				position: position,
 				map: map,
 			});

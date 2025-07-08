@@ -305,7 +305,7 @@
 						<?php endif; ?>
 					</div>
 					<div class="map">
-						
+						<div id="gmap" data-maxZoom="18" data-minZoom="1"></div>
 					</div>
 				</section>
 			<?php endif; ?>

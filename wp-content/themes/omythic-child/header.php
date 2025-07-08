@@ -100,6 +100,6 @@
 
 	<div id="MainContent" class="wrapper" role="main">
 
-		<?php if( !is_front_page() ) : ?>
+		<?php /*if( !is_front_page() ) : ?>
 			<?php get_template_part( 'template', 'banner' ); ?>
-		<?php endif; ?>
+		<?php endif;*/ ?>
