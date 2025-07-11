@@ -3,7 +3,7 @@
 			// $primary_location = MakespaceChild::get_primary_location();
 			$site_contact = get_field('contact', 'option');
 		?>
-		<footer class="site-footer">
+		<footer class="site-footer scroll-animate-item">
 			<div class="bg"></div>
 			<div class="container">
 				<?php if(get_field('footer_logo', 'option')): ?>

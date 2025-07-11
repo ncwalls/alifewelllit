@@ -218,8 +218,8 @@
 	};
 
 
-
 	$(document).ready(function(){
+		$('body').addClass('ready');
 		homeHeroSlider();
 		heroVideo();
 		scrollAnim();

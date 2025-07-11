@@ -103,12 +103,12 @@
 			<?php if($intro = get_field('intro')): ?>
 				<section class="home-section home-intro">
 					<?php if($intro['background_image']): ?>
-						<div class="bg">
+						<div class="bg scroll-animate-item">
 							<img src="<?php echo $intro['background_image']['url']; ?>" alt="" loading="lazy">
 						</div>
 					<?php endif; ?>
 					<div class="container">
-						<div class="content">
+						<div class="content scroll-animate-item">
 							<?php if($intro['title']): ?>
 								<h2 class="section-title"><?php echo $intro['title']; ?></h2>
 							<?php endif; ?>
@@ -123,7 +123,7 @@
 							<?php endif; ?>
 						</div>
 
-						<div class="topics">
+						<div class="topics scroll-animate-item">
 							<?php if($intro['topic_title']): ?>
 								<h2 class="section-title"><?php echo $intro['topic_title']; ?></h2>
 							<?php endif; ?>
@@ -138,9 +138,9 @@
 			<?php if($host = get_field('host')): ?>
 				<section class="home-section home-host">
 					<?php if($host['background_image']): ?>
-						<img src="<?php echo $host['background_image']['url']; ?>" alt="" class="bg" loading="lazy">
+						<img src="<?php echo $host['background_image']['url']; ?>" alt="" class="bg scroll-animate-item" loading="lazy">
 					<?php endif; ?>
-					<div class="container">
+					<div class="container scroll-animate-item">
 						<?php if($host['title']): ?>
 							<h2 class="section-title"><?php echo $host['title']; ?></h2>
 						<?php endif; ?>
@@ -169,12 +169,12 @@
 			<?php if($table = get_field('table')): ?>
 				<section class="home-section home-table">
 					<?php if($table['background_image']): ?>
-						<div class="bg">
+						<div class="bg scroll-animate-item">
 							<img src="<?php echo $table['background_image']['url']; ?>" alt="" loading="lazy">
 						</div>
 					<?php endif; ?>
 					<div class="container">
-						<div class="content">
+						<div class="content scroll-animate-item">
 							<?php if($table['title']): ?>
 								<h2 class="section-title"><?php echo $table['title']; ?></h2>
 							<?php endif; ?>
@@ -191,8 +191,8 @@
 
 			<?php if($guest = get_field('guest')): ?>
 				<section class="home-section home-guest">
-					<div class="bg"></div>
-					<div class="container">
+					<div class="bg scroll-animate-item"></div>
+					<div class="container scroll-animate-item">
 						<?php if($guest['image']): ?>
 							<figure class="image">
 								<img src="<?php echo $guest['image']['sizes']['medium']; ?>" alt="" loading="lazy">
@@ -201,9 +201,6 @@
 						<div class="content">
 							<?php if($guest['title']): ?>
 								<h2 class="section-title"><?php echo $guest['title']; ?></h2>
-							<?php endif; ?>
-							<?php if($guest['subtitle']): ?>
-								<h3 class="section-subtitle"><?php echo $guest['subtitle']; ?></h3>
 							<?php endif; ?>
 							<?php if($guest['content']): ?>
 								<div class="wysiwyg"><?php echo $guest['content']; ?></div>
@@ -219,10 +216,10 @@
 			<?php if($sponsorship = get_field('sponsorship')): ?>
 				<section class="home-section home-sponsorship">
 					<?php if($sponsorship['background_image']): ?>
-						<img src="<?php echo $sponsorship['background_image']['url']; ?>" alt="" class="bg" loading="lazy">
+						<img src="<?php echo $sponsorship['background_image']['url']; ?>" alt="" class="bg scroll-animate-item" loading="lazy">
 					<?php endif; ?>
 					<div class="container">
-						<div class="content">
+						<div class="content scroll-animate-item">
 							<?php if($sponsorship['title']): ?>
 								<h2 class="section-title"><?php echo $sponsorship['title']; ?></h2>
 							<?php endif; ?>
@@ -234,7 +231,7 @@
 							<?php endif; ?>
 						</div>
 						<?php if($download = $sponsorship['download']): ?>
-							<div class="download">
+							<div class="download scroll-animate-item">
 								<?php if($download['image']): ?>
 									<figure class="dl-image">
 										<img src="<?php echo $download['image']['sizes']['small']; ?>" alt="" loading="lazy">
@@ -253,19 +250,21 @@
 								</div>
 							</div>
 						<?php endif; ?>
-						<?php if($sponsors = $sponsorship['sponsors']): ?>
-							<div class="sponsors">
-								<div class="sponsors-content">
-									<?php if($sponsors['title']): ?>
-										<h3 class="title"><?php echo $sponsors['title']; ?></h3>
-									<?php endif; ?>
-									<?php if($sponsors['content']): ?>
-										<div class="wysiwyg"><?php echo $sponsors['content']; ?></div>
-									<?php endif; ?>
-								</div>
-								<ul class="sponsors-list">
+					</div>
+					<?php if($sponsors = $sponsorship['sponsors']): ?>
+						<div class="sponsors scroll-animate-item">
+							<div class="container sponsors-content">
+								<?php if($sponsors['title']): ?>
+									<h3 class="title"><?php echo $sponsors['title']; ?></h3>
+								<?php endif; ?>
+								<?php if($sponsors['content']): ?>
+									<div class="wysiwyg"><?php echo $sponsors['content']; ?></div>
+								<?php endif; ?>
+							</div>
+							<div class="sponsors-marquee">
+								<div class="sponsors-list">
 									<?php foreach($sponsors['sponsors'] as $sponsor): ?>
-										<li>
+										<div class="slide">
 											<?php
 												$sponsor_name = '';
 												if($sponsor['link']){
@@ -282,18 +281,62 @@
 													echo '</a>';
 												}
 											?>
-										</li>
+										</div>
 									<?php endforeach; ?>
-								</ul>
+								</div>
+								<div class="sponsors-list">
+									<?php foreach($sponsors['sponsors'] as $sponsor): ?>
+										<div class="slide">
+											<?php
+												$sponsor_name = '';
+												if($sponsor['link']){
+													$sponsor_name = $sponsor['link']['title'];
+													echo '<a href="' . $sponsor['link']['url'] . '" target="' . $sponsor['link']['target'] . '" class="button">';
+												}
+												if($sponsor['logo']){
+													echo '<img src="' . $sponsor['logo']['sizes']['small'] . '" alt="' . $sponsor_name . '">';
+												}
+												else{
+													echo $sponsor_name;
+												}
+												if($sponsor['link']){
+													echo '</a>';
+												}
+											?>
+										</div>
+									<?php endforeach; ?>
+								</div>
+								<div class="sponsors-list">
+									<?php foreach($sponsors['sponsors'] as $sponsor): ?>
+										<div class="slide">
+											<?php
+												$sponsor_name = '';
+												if($sponsor['link']){
+													$sponsor_name = $sponsor['link']['title'];
+													echo '<a href="' . $sponsor['link']['url'] . '" target="' . $sponsor['link']['target'] . '" class="button">';
+												}
+												if($sponsor['logo']){
+													echo '<img src="' . $sponsor['logo']['sizes']['small'] . '" alt="' . $sponsor_name . '">';
+												}
+												else{
+													echo $sponsor_name;
+												}
+												if($sponsor['link']){
+													echo '</a>';
+												}
+											?>
+										</div>
+									<?php endforeach; ?>
+								</div>
 							</div>
-						<?php endif; ?>
-					</div>
+						</div>
+					<?php endif; ?>
 				</section>
 			<?php endif; ?>
 
 			<?php if($locations = get_field('locations')): ?>
 				<section class="home-section home-locations">
-					<div class="content">
+					<div class="content scroll-animate-item">
 						<?php if($locations['title']): ?>
 							<h2 class="section-title"><?php echo $locations['title']; ?></h2>
 						<?php endif; ?>
@@ -313,7 +356,7 @@
 			<?php if($blog = get_field('blog')): ?>
 				<section class="home-section home-blog">
 					<div class="container">
-						<div class="content">
+						<div class="content scroll-animate-item">
 							<?php if($blog['title']): ?>
 								<h2 class="section-title"><?php echo $blog['title']; ?></h2>
 							<?php endif; ?>
@@ -322,7 +365,7 @@
 							<?php endif; ?>
 						</div>
 					</div>
-					<div class="blog-list">
+					<div class="blog-list scroll-animate-item">
 						<?php
 							$latest_posts = get_posts(array(
 								'posts_per_page' => 3,
@@ -391,10 +434,10 @@
 			<?php if($contact = get_field('contact')): ?>
 				<section class="home-section home-contact">
 					<?php if($contact['background_image']): ?>
-						<img src="<?php echo $contact['background_image']['url']; ?>" alt="" class="bg" loading="lazy">
+						<img src="<?php echo $contact['background_image']['url']; ?>" alt="" class="bg scroll-animate-item" loading="lazy">
 					<?php endif; ?>
 					<div class="container">
-						<div class="content">
+						<div class="content scroll-animate-item">
 							<?php if($contact['title']): ?>
 								<h2 class="section-title"><?php echo $contact['title']; ?></h2>
 							<?php endif; ?>

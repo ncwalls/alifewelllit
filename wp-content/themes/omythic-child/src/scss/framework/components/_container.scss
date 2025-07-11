@@ -4,4 +4,8 @@
 	margin-right: auto;
 	max-width: pxem(1200);
 	width: 80%;
+
+	@media (max-width: $mobile) {
+		width: 90%;
+	}
 }

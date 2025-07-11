@@ -17,7 +17,7 @@ body {
 	color: $brand-black;
 	font-family: $font-family-base;
 	font-size: #{math.div($font-size-base, 10px)}rem;
-	font-size: clamp(1.6rem, #{( math.div(($font-size-base - 10), $design-width)) * 100}vw + 1rem, #{math.div($font-size-base, 10px)}rem);
+	font-size: clamp(1.7rem, #{( math.div(($font-size-base - 10), $design-width)) * 100}vw + 1rem, #{math.div($font-size-base, 10px)}rem);
 	font-weight: $font-weight-base;
 	line-height: $line-height-base;
 	padding-top: pxem(67);
