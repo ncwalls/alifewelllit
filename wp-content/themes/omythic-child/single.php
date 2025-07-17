@@ -5,11 +5,41 @@
 			<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 				<h1><?php the_title(); ?></h1>
 				<ul class="post-meta">
-					<li datetime="<?php the_time( 'Y-m-d' ); ?>" itemprop="datePublished"><?php the_time( 'F j, Y' ); ?></li>
-					<li><?php read_time(); ?></li>
-					<li><?php the_author(); ?></li>
+					<li class="readtime">
+						<span class="label">Read time:</span>
+						<span><?php read_time(); ?></span>
+					</li>
+					<?php if(get_the_category()): ?>
+						<li>
+							<span class="label">Category:</span>
+							<ul class="category">
+								<?php foreach(get_the_category(get_the_ID()) as $cat): ?>
+									<li><?php echo $cat->name; ?></li>
+								<?php endforeach; ?>
+							</ul>
+						</li>
+					<?php endif; ?>
+					<li class="author">
+						<span class="label">Author:</span>
+						<span><?php the_author(); ?></span>
+					</li>
 				</ul>
 				<div class="wysiwyg">
+					
+					<figure class="post-thumbnail">
+						<div class="image">
+							<?php 
+								$thumb_image = '';
+								if( get_the_post_thumbnail_url() ){
+									$thumb_image = get_the_post_thumbnail_url( get_the_ID(), 'medium' );
+								}
+								else{
+									$thumb_image = get_field( 'default_placeholder_image', 'option' )['sizes']['medium'];
+								}
+							?>
+							<img src="<?php echo $thumb_image; ?>" alt="" loading="lazy">
+						</div>
+					</figure>
 					<?php the_content(); ?>
 				</div>
 				<div class="single-share">

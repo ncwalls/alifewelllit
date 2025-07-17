@@ -1,7 +1,57 @@
 .single-post {
-	h1{
-		margin-bottom: 0.2em;
+
+	.hentry{
+		background: $brand-brown-lt;
+		box-shadow: 0 pxem(32) pxem(23) rgba(0, 0, 0, 0.4);
+		color: $brand-black;
+		padding: 3em;
 	}
+
+	h1{
+		// margin-bottom: 0.2em;
+	}
+
+	.post-meta{
+		border-left: 1px solid $brand-black;
+		font-size: pxem(14);
+		font-weight: 600;
+		letter-spacing: 0.03em;
+		list-style: none;
+		margin: 0 0 1em 0;
+		padding: 0 0 0 1em;
+
+		> li{
+			margin-bottom: 0.4em;
+		}
+
+		ul{
+			display: inline-block;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+
+			li{
+				display: inline-block;
+				
+				&:after{
+					content: ', ';
+				}
+
+				&:last-child{
+					&:after{
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	.post-thumbnail{
+		float: right;
+		margin: 0 0 1em 1em;
+		width: 50%;
+	}
+
 }
 
 .post-meta{

@@ -3,7 +3,7 @@
 	align-items: center;
 	display: flex;
 	justify-content: end;
-	margin: pxem(40) 0;
+	// margin: pxem(40) 0;
 	width: 100%;
 
 	.filter-label{
@@ -14,6 +14,8 @@
 
 	.filter-dropdown{
 		// background: rgba($brand-black, 0.13);
+		background: $brand-brown-lt;
+		color: $brand-black;
 		flex: 1;
 		max-width: pxem(270);
 		position:relative;

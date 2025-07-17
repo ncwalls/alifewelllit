@@ -119,7 +119,7 @@
 								<div class="wysiwyg"><?php echo $intro['content']; ?></div>
 							<?php endif; ?>
 							<?php if($intro_button = $intro['button']): ?>
-								<a href="<?php echo $intro_button['url']; ?>" target="<?php echo $intro_button['target']; ?>" class="button"><?php echo $intro_button['title']; ?></a>
+								<a href="<?php echo $intro_button['url']; ?>" target="<?php echo $intro_button['target']; ?>" data-target="<?php echo $intro['button_form_target'] ?: ''; ?>" class="button"><?php echo $intro_button['title']; ?></a>
 							<?php endif; ?>
 						</div>
 
@@ -206,7 +206,7 @@
 								<div class="wysiwyg"><?php echo $guest['content']; ?></div>
 							<?php endif; ?>
 							<?php if($guest_button = $guest['button']): ?>
-								<a href="<?php echo $guest_button['url']; ?>" target="<?php echo $guest_button['target']; ?>" class="button dark hover-light"><?php echo $guest_button['title']; ?></a>
+								<a href="<?php echo $guest_button['url']; ?>" target="<?php echo $guest_button['target']; ?>" data-target="<?php echo $guest['button_form_target'] ?: ''; ?>" class="button dark hover-light"><?php echo $guest_button['title']; ?></a>
 							<?php endif; ?>
 						</div>
 					</div>
@@ -245,7 +245,7 @@
 										<div class="wysiwyg"><?php echo $download['description']; ?></div>
 									<?php endif; ?>
 									<?php if($download_button = $download['button']): ?>
-										<a href="<?php echo $download_button['url']; ?>" target="<?php echo $download_button['target']; ?>" class="button"><?php echo $download_button['title']; ?></a>
+										<a href="<?php echo $download_button['url']; ?>" target="<?php echo $download_button['target']; ?>" data-target="<?php echo $download['button_form_target'] ?: ''; ?>" class="button"><?php echo $download_button['title']; ?></a>
 									<?php endif; ?>
 								</div>
 							</div>
@@ -344,7 +344,7 @@
 							<div class="wysiwyg"><?php echo $locations['content']; ?></div>
 						<?php endif; ?>
 						<?php if($locations_button = $locations['button']): ?>
-							<a href="<?php echo $locations_button['url']; ?>" target="<?php echo $locations_button['target']; ?>" class="button hover-dark"><?php echo $locations_button['title']; ?></a>
+							<a href="<?php echo $locations_button['url']; ?>" target="<?php echo $locations_button['target']; ?>" data-target="<?php echo $locations['button_form_target'] ?: ''; ?>" class="button hover-dark"><?php echo $locations_button['title']; ?></a>
 						<?php endif; ?>
 					</div>
 					<div class="map">
@@ -432,7 +432,7 @@
 			<?php endif; ?>
 
 			<?php if($contact = get_field('contact')): ?>
-				<section class="home-section home-contact">
+				<section id="home-section-contact" class="home-section home-contact">
 					<?php if($contact['background_image']): ?>
 						<img src="<?php echo $contact['background_image']['url']; ?>" alt="" class="bg scroll-animate-item" loading="lazy">
 					<?php endif; ?>

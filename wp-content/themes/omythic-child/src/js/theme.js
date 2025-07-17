@@ -123,6 +123,13 @@
 
 		$('.scroll-to-anchor a, a[href^="#"]').on('click', function(e){
 
+			// console.log(this.hash);
+
+			if($(this).attr('data-target')){
+				var targetVal = $(this).attr('data-target');
+				$('#input_1_7').val(targetVal);
+			}
+
 			if($(this).hasClass('no-scroll')){
 				return;
 			}

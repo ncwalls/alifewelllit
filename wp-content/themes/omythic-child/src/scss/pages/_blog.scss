@@ -1,9 +1,27 @@
 .blog,
 .category {
 	.container.main{
+		max-width: pxem(1440);
+		padding: 0 pxem(40);
+		width: 100%;
+
 		.wysiwyg{
-			max-width: pxem(850);
+			// max-width: pxem(850);
 		}
+	}
+}
+
+.blog-header{
+	display: flex;
+	align-items: end;
+	gap: 2em;
+
+	.content{
+		flex: 1;
+	}
+
+	p:last-child{
+		margin-bottom: 0;
 	}
 }
 
@@ -155,7 +173,7 @@
 		font-size: pxem(20);
 		font-weight: 700;
 		line-height: 1;
-		margin: 0 0.5rem;
+		margin: 0 0.7rem;
 		text-decoration: none;
 		vertical-align: middle;
 
@@ -164,15 +182,15 @@
 		}
 		
 		&.prev{
-			margin: 0 2rem 0 0;
+			margin: 0 1em 0 0;
 		}
 		
 		&.next{
-			margin: 0 0 0 2rem;
+			margin: 0 0 0 1em;
 		}
 
 		i{
-			font-size: 1.3em;
+			font-size: 1em;
 			font-weight: 400;
 		}
 	}

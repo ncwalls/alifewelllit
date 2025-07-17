@@ -1,49 +1,52 @@
 <?php get_header(); ?>
 
 	<div class="container main">
-		<h1><?php echo get_the_title(get_option('page_for_posts')); ?></h1>
-		<?php if( single_term_title( '', false ) ): ?>
-			<h2 class="category-title"><?php single_term_title(); ?></h2>
-		<?php endif;?>
-		<?php if(is_search()): ?>
-			<h2>Search: "<?php echo htmlentities(get_search_query()); ?>"</h2>
-		<?php else: ?>
-			<div class="wysiwyg">
-				<?php echo apply_filters('the_content', get_post_field('post_content', get_option('page_for_posts'))); ?>
+		<div class="blog-header">
+			<div>
+				<h1><?php echo get_the_title(get_option('page_for_posts')); ?></h1>
+				<?php if( single_term_title( '', false ) ): ?>
+					<h2 class="category-title"><?php single_term_title(); ?></h2>
+				<?php endif;?>
+				<?php if(is_search()): ?>
+					<h2>Search: "<?php echo htmlentities(get_search_query()); ?>"</h2>
+				<?php else: ?>
+					<div class="wysiwyg">
+						<?php echo apply_filters('the_content', get_post_field('post_content', get_option('page_for_posts'))); ?>
+					</div>
+				<?php endif; ?>
 			</div>
-		<?php endif; ?>
-		
-		<div class="filter-container">
-			<div class="filter-label">Filter By</div>
-			<div class="filter-dropdown">
-				<div class="filter-display">
-					<?php
-						if( single_term_title( '', false ) ){
-							single_term_title();
-						} else {
-							echo 'Filter By';
-						}
-					?>
-				</div>
-				<nav class="dropdown-list">
-					<ul>
-						<?php $post_type_name = get_post_type_object( get_post_type( get_the_ID() ) )->labels->name;  ?>
-						<li><a title="View All <?php echo $post_type_name; ?>" href="<?php echo get_post_type_archive_link( get_post_type( get_the_ID() ) ); ?>">All</a></li>
+			
+			<div class="filter-container">
+				<div class="filter-dropdown">
+					<div class="filter-display">
 						<?php
-							$categories = get_categories( array(
-								'orderby' => 'name',
-								'order'   => 'ASC'
-							) );
-
-							foreach( $categories as $category ) {
-								$caturl = get_category_link( $category->term_id );
-								$catname = $category->name;
-								$accessibility_title = $catname . ' ' . $post_type_name;
-								echo '<li><a title="' . $accessibility_title . '" href="' . $caturl .'">' . $catname. '</a></li>';
+							if( single_term_title( '', false ) ){
+								single_term_title();
+							} else {
+								echo 'Filter By';
 							}
 						?>
-					</ul>
-				</nav>
+					</div>
+					<nav class="dropdown-list">
+						<ul>
+							<?php $post_type_name = get_post_type_object( get_post_type( get_the_ID() ) )->labels->name;  ?>
+							<li><a title="View All <?php echo $post_type_name; ?>" href="<?php echo get_post_type_archive_link( get_post_type( get_the_ID() ) ); ?>">All</a></li>
+							<?php
+								$categories = get_categories( array(
+									'orderby' => 'name',
+									'order'   => 'ASC'
+								) );
+
+								foreach( $categories as $category ) {
+									$caturl = get_category_link( $category->term_id );
+									$catname = $category->name;
+									$accessibility_title = $catname . ' ' . $post_type_name;
+									echo '<li><a title="' . $accessibility_title . '" href="' . $caturl .'">' . $catname. '</a></li>';
+								}
+							?>
+						</ul>
+					</nav>
+				</div>
 			</div>
 		</div>
 	</div>
